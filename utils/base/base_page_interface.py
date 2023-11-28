@@ -31,6 +31,7 @@ class BasePage:
         with step(f'Mouse hover "{locator}"'):
             element =  await self.app.page.query_selector(locator)
             await element.hover()
+            
     async def get_url(self) -> str:
         return self.app.page.url
 
