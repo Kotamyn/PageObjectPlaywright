@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 GENERAL_DIR=$(pwd)
 
 TESTS_DIR=$GENERAL_DIR/tests/
