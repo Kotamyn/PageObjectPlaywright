@@ -1,7 +1,10 @@
 
 FROM --platform=linux/amd64 python:3.11-slim
 
-WORKDIR /page_object_playwright/
+WORKDIR /page_object_playwright/pop
+
+# Ignor "Running pip as the root"
+ENV PIP_ROOT_USER_ACTION=ignore
 
 ENV PATH=$PATH:/page_object_playwright/.local/bin
 
@@ -10,7 +13,8 @@ COPY . /page_object_playwright/
 RUN apt-get update \
     && apt-get -y install libnss3 libatk-bridge2.0-0 libdrm-dev libxkbcommon-dev libgbm-dev libasound-dev libatspi2.0-0 libxshmfence-dev \
    # && apt-get install -y wget && apt-get install -y unzip \
-    && pip install --upgrade pip 
+    && pip install --upgrade pip \
+    && pip install poetry 
 
 # Install allurectl
 # ENV ALLURECTL_VERSION=2.15.1
@@ -28,10 +32,9 @@ RUN apt-get update \
 
 #ENV PATH=$PATH:/opt/allure/allure-${ALLURE_VERSION}/bin
 
-RUN pip install poetry \ 
-    && poetry init \ 
-    && cat requirements.txt | xargs poetry add \
+RUN  poetry config virtualenvs.create false \
+    && poetry install --no-root --only main \
     && poetry run playwright install \
     && poetry run playwright install-deps 
 
-CMD [ "poetry", "run", "pytest" ]
+CMD [ "poetry", "run", "pytest"]

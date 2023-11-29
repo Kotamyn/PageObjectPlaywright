@@ -10,18 +10,18 @@ cd PageObjectPlaywright
 
 Create virtual environment for this project/directory and  Install the requirements     
 ```
-make install
+make init
 ```
 
 Run the tests
 ```
-pytest
+make tests
 ```
 
 Run the tests + allure
 ```bash
-chmod +x start_tests_allure.sh
-./start_tests_allure.sh
+make tests_allure or 
+sh scripts/start_tests_allure.sh
 ```
 
 ## Docker

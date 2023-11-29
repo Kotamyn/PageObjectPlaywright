@@ -54,14 +54,12 @@ async def page(get_param):
 async def app(page: Page) -> Application:
     return Application(page)
 
-#хук распределения тестов по папкам
 def pytest_collection_modifyitems(session, config, items):
     for test_case in items:
         test_case.add_marker(label("layer", "ui")) # AllureTestOps -> Settings -> Test Layers
         test_case.add_marker(label("epic", "Playwright"))
         test_case.add_marker(label("product", "Autotests"))
         test_case.add_marker(label("component", f"UI"))
-
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):

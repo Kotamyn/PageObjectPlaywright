@@ -1,23 +1,29 @@
-PROJECT_NAME = PageObjectPlayWright
+# variables
+SCRIPTS_PATH := ./scripts
+PROJECT_NAME := page-object-playwright
 
-.PHONY: help install test allure_test
+.PHONY: help init tests tests_allure
 
 help:
 	@echo MyProject - $(PROJECT_NAME)
 	@echo "make help - Print this messages"
-	@echo "make install - Install dependencies 'requirements|playwright'"
-	@echo "make test - Run tests"
-	@echo "make allure_test - Run tests + allure"
+	@echo "make init - Install dependencies 'requirements|playwright'"
+	@echo "make tests - Run tests"
+	@echo "make tests_allure - Run tests + allure server"
 
-install:
-	python3 -m venv venv
-	. venv/bin/activate && pip install -r requirements.txt
-	. venv/bin/activate && playwright install
-test:
-	pytest
+init:
+	chmod +x ${SCRIPTS_PATH}/check_poetry.sh && \
+	sh ${SCRIPTS_PATH}/check_poetry.sh
+	cd pop \
+	&& poetry install \
+	&& poetry run playwright install
 
-allure_test:
-	chmod +x start_tests_allure.sh
-	./start_tests_allure.sh
+tests:
+	cd pop && \
+	poetry run pytest -s
+
+tests_allure:
+	chmod +x ${SCRIPTS_PATH}/start_tests_allure.sh && \
+	sh ${SCRIPTS_PATH}/start_tests_allure.sh
 
 .DEFAULT_GOAL := help
