@@ -27,6 +27,7 @@ def pytest_addoption(parser):
 def get_param(request):
     config_param = {}
     config_param["browser"] = request.config.getoption("--brow")
+    config_param["headless"] = request.config.getoption("--headless")
     return config_param
 
 @pytest.fixture(scope="session")
