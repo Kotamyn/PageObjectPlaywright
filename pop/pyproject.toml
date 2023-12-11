@@ -2,7 +2,7 @@
 name = "page-object-playwright"
 version = "0.1.0"
 description = ""
-authors = ["Rodionchik <insert_into_u_ass@cum.com>"]
+authors = ["Kotamyn <telegram>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
