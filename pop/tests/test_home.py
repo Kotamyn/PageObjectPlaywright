@@ -1,27 +1,42 @@
 import pytest
 import allure
+from allure import (
+    title, 
+    feature, 
+    tag, 
+    severity, 
+    severity_level
+)
 
-@allure.feature('Home')
+@feature('Home')
 @pytest.mark.regress
 @pytest.mark.home
 class TestHome:
 
-    @allure.title("Open docs")
+    @title("Open docs")
+    @tag("positive")
+    @severity(severity_level.NORMAL)
     async def test_open_docs(self, app):
         await app.navigation.open_home()
         await app.home.open_docs()
 
-    @allure.title("Open api")
+    @title("Open api")
+    @tag("positive")
+    @severity(severity_level.NORMAL)
     async def test_open_api(self, app):
         await app.navigation.open_home()
         await app.home.open_api()
 
-    @allure.title("Open community")
+    @title("Open community")
+    @tag("positive")
+    @severity(severity_level.NORMAL)
     async def test_open_community(self, app):
         await app.navigation.open_home()
         await app.home.open_community()
 
-    @allure.title("Select language")
+    @title("Select language -> {language}")
+    @tag("positive")
+    @severity(severity_level.NORMAL)
     @pytest.mark.parametrize("language", [
             "python",
             "node.js",
