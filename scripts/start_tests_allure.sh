@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-GENERAL_DIR=$(pwd)
+GENERAL_DIR=$(dirname $(pwd))
 
 TESTS_DIR=$GENERAL_DIR/pop/tests/
 PATH_ALLURE=$GENERAL_DIR/allure/bin/allure
