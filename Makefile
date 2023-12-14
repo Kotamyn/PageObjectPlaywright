@@ -1,6 +1,6 @@
 # variables
 SCRIPTS_PATH := ./scripts
-PROJECT_NAME := page-object-playwright
+PROJECT_NAME := page-factory-playwright
 DIR_PROJECT := pop
 
 .PHONY: help init tests tests_allure
@@ -19,9 +19,11 @@ init:
 	&& poetry run playwright install
 
 tests:
-	cd $(DIR_PROJECT) && poetry run pytest -s
+	cd $(DIR_PROJECT) \
+	&& poetry run pytest -s
 
 tests_allure:
-	chmod +x ${SCRIPTS_PATH}/start_tests_allure.sh && sh ${SCRIPTS_PATH}/start_tests_allure.sh
+	chmod -R +x $(SCRIPTS_PATH)/install.sh $(SCRIPTS_PATH)/start_tests_allure.sh
+	sh $(SCRIPTS_PATH)/install.sh && $(SCRIPTS_PATH)/start_tests_allure.sh 
 
 .DEFAULT_GOAL := help
