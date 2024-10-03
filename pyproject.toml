@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "page-object-playwright"
+name = "PageObjectPlaywright"
 version = "0.1.0"
 description = ""
 authors = ["Kotamyn <telegram>"]
