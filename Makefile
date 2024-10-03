@@ -1,6 +1,6 @@
 # variables
 SCRIPTS_PATH := ./scripts
-PROJECT_NAME := page-factory-playwright
+PROJECT_NAME := page-object-playwright
 DIR_PROJECT := pop
 
 .PHONY: help init tests tests_allure
