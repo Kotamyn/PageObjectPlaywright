@@ -1,4 +1,4 @@
-from utils.base.base_page_interface import BasePage
+from pop.utils.base.base_page_interface import BasePage
 
 class NavigationHelper(BasePage):
     

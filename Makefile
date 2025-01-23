@@ -1,7 +1,9 @@
 # variables
 SCRIPTS_PATH := ./scripts
 PROJECT_NAME := page-object-playwright
-DIR_PROJECT := pop
+
+CURRENT_DIR := $(shell pwd)
+DIR_PROJECT := ${CURRENT_DIR}/pop
 
 .PHONY: help init tests tests_allure
 

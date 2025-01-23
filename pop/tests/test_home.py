@@ -1,10 +1,10 @@
 import pytest
 import allure
 from allure import (
-    title, 
-    feature, 
-    tag, 
-    severity, 
+    title,
+    feature,
+    tag,
+    severity,
     severity_level
 )
 
